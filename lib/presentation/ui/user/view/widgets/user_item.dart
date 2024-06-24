@@ -15,27 +15,66 @@ class UserItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.push(AppRouter.userDetail, extra: user.email);
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Image.network(user.avatar, fit: BoxFit.contain),
-          const SizedBox(height: 8.0),
-          Text(
-            user.firstName,
-            style: AppTextStyles.blackSemiNormal,
-            textAlign: TextAlign.center,
+    return Column(
+      children: [
+        const SizedBox(
+          height: 16.0,
+        ),
+        GestureDetector(
+          onTap: () {
+            context.push(AppRouter.userDetail, extra: user.email);
+          },
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(
+                8.0,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 32.0,
+                    backgroundColor: Colors.green,
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        user.avatar,
+                      ),
+                      radius: 30.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 8.0,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        user.firstName + user.lastName,
+                        style: AppTextStyles.blackSemiNormal,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Text(
+                        user.email,
+                        style: AppTextStyles.graySemiNormal,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
-          const SizedBox(height: 8.0),
-          Container(
-            color: Colors.black26,
-            height: 16.0,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

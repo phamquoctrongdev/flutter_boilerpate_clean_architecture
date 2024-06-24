@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/core/constants/app_strings.dart';
+import 'package:flutter_boilerplate/presentation/ui/widgets/app_bar_view.dart';
 
 import '../../../../core/constants/app_text_styles.dart';
 
@@ -13,6 +15,9 @@ class UserDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarView(
+        title: AppStrings.kUserDetail,
+      ),
       body: Center(
         child: Text(
           text,

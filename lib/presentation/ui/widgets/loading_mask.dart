@@ -5,11 +5,11 @@ class LoadingMask extends StatelessWidget {
   const LoadingMask({
     super.key,
     required this.child,
-    this.isDisplay = false,
+    this.isDisplayLoading = false,
   });
 
   final Widget child;
-  final bool isDisplay;
+  final bool isDisplayLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class LoadingMask extends StatelessWidget {
       children: [
         child,
         Visibility(
-          visible: isDisplay,
+          visible: isDisplayLoading,
           child: Material(
             color: Colors.black.withOpacity(0.8),
             child: const Center(

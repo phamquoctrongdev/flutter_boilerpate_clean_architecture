@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp.router(
         theme: ThemeData(
-          fontFamily: FontFamily.exo,
+          fontFamily: FontFamily.mavenPro,
         ),
         routerConfig: AppRouter.routerConfig,
       ),

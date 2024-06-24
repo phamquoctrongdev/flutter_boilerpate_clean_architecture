@@ -114,12 +114,13 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: Exo
+    - family: MavenPro
       fonts:
-        - asset: assets/fonts/Exo2-VariableFont.ttf
+        - asset: assets/fonts/MavenPro-Regular.ttf
 
   assets:
-    - assets/images/
+    - assets/images/pngs/
+    - assets/images/svgs/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
