@@ -6,18 +6,18 @@ import 'package:get_it/get_it.dart';
 
 import '../../../../domain/use_cases/user/user_use_case.dart';
 
-final userProvider = AsyncNotifierProvider<UserNotifier, UserResponse>(
+final userProvider = AsyncNotifierProvider<UserController, UserResponse>(
   () {
-    return UserNotifier(
+    return UserController(
       GetIt.I.get<UserUseCase>(),
     );
   },
 );
 
-class UserNotifier extends AsyncNotifier<UserResponse> {
+class UserController extends AsyncNotifier<UserResponse> {
   final UserUseCase useCase;
 
-  UserNotifier(this.useCase);
+  UserController(this.useCase);
 
   @override
   Future<UserResponse> build() async {

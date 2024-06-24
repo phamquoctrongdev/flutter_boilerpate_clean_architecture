@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/app_bar_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../controller/user_notifier.dart';
+import '../controller/user_controller.dart';
 import 'widgets/user_item.dart';
 
 class UserScreen extends ConsumerWidget {
