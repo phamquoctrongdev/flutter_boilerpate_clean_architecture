@@ -15,7 +15,7 @@
 
 ## Environment
 
-This project is running on flutter version `3.16.5`.
+This project is running on flutter version `3.24.2`.
 
 ## Flavor configuration
 
