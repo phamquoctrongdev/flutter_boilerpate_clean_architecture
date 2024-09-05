@@ -125,6 +125,11 @@ This project is running on flutter version `3.16.5`.
        ```
        dart run build_runner build
        ```
+3. (Optional)
+    - To update all dependencies in pubspec.yaml file to latest version, run:
+      ```
+      flutter pub upgrade --major-versions --tighten
+      ```
 
 ## How to run?
 
