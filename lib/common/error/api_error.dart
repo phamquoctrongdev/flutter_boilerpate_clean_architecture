@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 
 class ApiError implements Exception {
-  final Response response;
+  final DioException exception;
 
-  ApiError(this.response);
+  ApiError(this.exception);
 
+  // TODO: Handle to return specific message.
   String get message {
-    switch (response.statusCode) {
+    assert(exception.response != null);
+    switch (exception.response!.statusCode) {
       case 400:
         return 'ERROR_400';
       case 401:
@@ -20,6 +22,6 @@ class ApiError implements Exception {
 
   @override
   String toString() {
-    return '$this: $message';
+    return '$runtimeType: $message';
   }
 }

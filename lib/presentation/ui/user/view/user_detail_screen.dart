@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/core/constants/app_strings.dart';
+import 'package:flutter_boilerplate/common/constants/app_strings.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/app_bar_view.dart';
 
-import '../../../../core/constants/app_text_styles.dart';
+import '../../../../common/constants/app_text_styles.dart';
 
 class UserDetailScreen extends StatelessWidget {
   const UserDetailScreen({

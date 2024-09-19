@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/core/constants/app_strings.dart';
+import 'package:flutter_boilerplate/common/constants/app_strings.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/app_bar_view.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/loading_mask.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/not_found_data_view.dart';

@@ -1,5 +1,7 @@
 import 'package:flutter_boilerplate/data/datasource/remote/user/user_remote_datasource_impl.dart';
 import 'package:flutter_boilerplate/data/repository/user/user_repository_impl.dart';
+import 'package:flutter_boilerplate/data/response/base_response.dart';
+import 'package:flutter_boilerplate/data/response/pagination_response.dart';
 import 'package:flutter_boilerplate/data/response/user/user_response.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
@@ -13,13 +15,17 @@ void main() {
   group('UserRepository', () {
     final mockDataSource = MockUserRemoteDatasourceImpl();
     final repository = UserRepositoryImpl(mockDataSource);
-    const mockDataSuccess = Right<Exception, UserResponse>(
-      UserResponse(),
-    );
-    final mockDataException = Left<Exception, UserResponse>(Exception());
+    final mockDataSuccess =
+        Right<Exception, BaseResponse<UserResponse>>(BaseResponse(
+      const UserResponse(),
+      pagination: const PaginationResponse(),
+    ));
+    final mockDataException =
+        Left<Exception, BaseResponse<UserResponse>>(Exception());
 
     test('Fetch success', () async {
-      provideDummy<Either<Exception, UserResponse>>(mockDataSuccess);
+      provideDummy<Either<Exception, BaseResponse<UserResponse>>>(
+          mockDataSuccess);
       when(mockDataSource.fetchUsers())
           .thenAnswer((realInvocation) async => mockDataSuccess);
       final actual = await repository.fetchUsers();
@@ -27,7 +33,8 @@ void main() {
     });
 
     test('Fetch error', () async {
-      provideDummy<Either<Exception, UserResponse>>(mockDataException);
+      provideDummy<Either<Exception, BaseResponse<UserResponse>>>(
+          mockDataException);
       when(mockDataSource.fetchUsers())
           .thenAnswer((realInvocation) async => mockDataException);
       final actual = await repository.fetchUsers();

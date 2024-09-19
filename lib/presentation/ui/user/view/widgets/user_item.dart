@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/data/response/user/user.dart';
+import 'package:flutter_boilerplate/presentation/router/router_helper.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/constants/app_text_styles.dart';
-import '../../../../router/app_router.dart';
+import '../../../../../common/constants/app_text_styles.dart';
 
 class UserItem extends StatelessWidget {
   const UserItem({
@@ -22,7 +22,10 @@ class UserItem extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            context.push(AppRouter.userDetail, extra: user.email);
+            context.push(
+              AppRoute.userDetail.path,
+              extra: user.email,
+            );
           },
           child: DecoratedBox(
             decoration: BoxDecoration(

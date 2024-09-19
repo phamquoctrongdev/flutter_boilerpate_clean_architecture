@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 
-import '../../../core/constants/app_strings.dart';
-import '../../../core/constants/app_text_styles.dart';
+import '../../../common/constants/app_strings.dart';
+import '../../../common/constants/app_text_styles.dart';
 
 class NotFoundDataView extends StatelessWidget {
   const NotFoundDataView({

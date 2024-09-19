@@ -1,34 +1,26 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_boilerplate/core/error/user_error.dart';
+import 'package:flutter_boilerplate/common/error/user_error.dart';
+import 'package:flutter_boilerplate/data/network_client.dart';
+import 'package:flutter_boilerplate/data/response/base_response.dart';
 import 'package:flutter_boilerplate/data/response/user/user_response.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../api_endpoint.dart';
-import '../auth_interceptor.dart';
 import 'user_remote_datasource.dart';
 
-class UserRemoteDatasourceImpl implements UserDatasource {
-  final Dio dio;
-
-  UserRemoteDatasourceImpl(this.dio);
+class UserRemoteDatasourceImpl extends NetworkClient implements UserDatasource {
+  UserRemoteDatasourceImpl(super.dio);
 
   @override
-  Future<Either<Exception, UserResponse>> fetchUsers() async {
-    try {
-      const endpoint = APIEndpoint.users;
-      dio.interceptors.add(AuthInterceptor());
-      final response = await dio.get(endpoint);
-      final result = UserResponse.fromJson(response.data);
-      return Right(result);
-    } on DioException catch (e) {
-      final response = e.response;
-      if (response != null) {
-        return Left(UserError(response));
-      } else {
-        return Left(e);
-      }
-    } on Exception catch (e) {
-      return Left(e);
-    }
+  Future<Either<Exception, BaseResponse<UserResponse>>> fetchUsers() async {
+    return call(
+      endpoint: APIEndpoint.users,
+      method: NetworkMethod.get,
+      onSuccess: (response) {
+        return UserResponse.fromJson(response.data);
+      },
+      onError: (err) {
+        return UserError(err);
+      },
+    );
   }
 }

@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/presentation/router/router_helper.dart';
 import 'package:go_router/go_router.dart';
 
 import '../ui/main_home/view/main_home_page.dart';
@@ -6,46 +7,54 @@ import '../ui/user/view/user_detail_screen.dart';
 import '../ui/user/view/user_screen.dart';
 
 class AppRouter {
-  static const String detail = 'detail';
-
-  static const String user = '/user';
-  static const String userDetail = '/user/detail';
-
-  static const String profileChildTemp = '/profile_child_temp';
-
   static final routerConfig = GoRouter(
-    initialLocation: user,
+    initialLocation: AppRoute.user.path,
     routes: [
-      ShellRoute(
-        builder: (context, state, child) {
-          return MainHomePage(child: child);
-        },
-        routes: [
-          GoRoute(
-            path: user,
-            builder: (context, state) {
-              return const UserScreen();
+      StatefulShellRoute.indexedStack(
+        pageBuilder: (context, state, navigationShell) {
+          return CustomTransitionPage(
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return RotationTransition(
+                turns: animation,
+                child: child,
+              );
             },
+            child: MainHomePage(shell: navigationShell),
+          );
+        },
+        branches: [
+          StatefulShellBranch(
             routes: [
               GoRoute(
-                path: detail,
+                path: AppRoute.user.path,
                 builder: (context, state) {
-                  return UserDetailScreen(text: state.extra as String);
+                  return const UserScreen();
                 },
+                routes: [
+                  GoRoute(
+                    path: AppChildRoute.detail.path,
+                    builder: (context, state) {
+                      return UserDetailScreen(text: state.extra as String);
+                    },
+                  ),
+                ],
               ),
             ],
           ),
-          GoRoute(
-            path: profileChildTemp,
-            builder: (context, state) {
-              return const Center(
-                child: Text(
-                  'Profile child temp',
-                  key: Key('MyTextKey'),
-                ),
-              );
-            },
-          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoute.profile.path,
+                builder: (context, state) {
+                  return const Scaffold(
+                    backgroundColor: Colors.green,
+                    body: Center(child: Text('Child')),
+                  );
+                },
+              ),
+            ],
+          )
         ],
       ),
     ],

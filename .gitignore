@@ -33,7 +33,10 @@ migrate_working_dir/
 .pub/
 /build/
 *.gen.dart
+*.freezed.dart
+*.g.dart
 *.mocks.dart
+/lib/l10n/gen
 
 # Symbolication related
 app.*.symbols

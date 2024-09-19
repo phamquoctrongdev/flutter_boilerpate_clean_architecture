@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/constants/app_strings.dart';
+import '../../../common/constants/app_strings.dart';
 import '../../../gen/colors.gen.dart';
 
 class AppAlertDialog extends StatelessWidget {

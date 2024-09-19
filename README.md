@@ -32,79 +32,6 @@ This project is running on flutter version `3.24.2`.
 
    **NOTE**: You can edit the configuration in `/.vscode/launch.json`.
 
-## Personalize
-
-1. In **pubspec.yaml**, at line 1:
-   ```
-   name: flutter_boilerplate
-   ```
-   Change `flutter_boilerplate` to new name.
-
-   **NOTE**: What is `name` in above snippet means?
-
-   > The name of this package. The name is how other packages refer to yours, should you publish it.
-
-2. Replace all **imported directories** with the new name in step 1.
-
-   Find in project and replace all `package:flutter_boilerplate` to new name (in step 1)
-
-   Old import:
-   ```
-   import 'package:flutter_boilerplate/data/data_sources/user/user_remote_data_source_impl.dart';
-   ```
-   New import:
-   ```
-   import 'package:your_new_package_name/src/data/data_sources/user/user_remote_data_source_impl.dart';
-   ```
-3. Change the **namespace** and the **package name** for Android:
-    - In app/build.gradle:
-
-      Change `com.example.flutter_boilerplat` to the new **namespace**.
-
-         ```
-         namespace "com.example.flutter_boilerplate"
-         ```
-      Change `com.example.flutter_boilerplate` to the new **package name (applicationId)**.
-
-       ```
-       applicationId "com.example.flutter_boilerplate"
-       ```
-
-    - In MainActivity.kt:
-      Change `com.example.flutter_boilerplate` to the new **package name** (equivalent to *
-      *namespace**).
-
-      ```
-      package com.flutter.boilerplate.flutter_boilerplate
-      ```
-
-      **NOTE**:  `namespace` in **app/build.gradle** must have like `package` in **MainActivity.kt
-      **.
-
-4. Change the **package name** for iOS:
-
-    - Change all lines containing  `com.example.flutter_boilerplate` to the **new package name** in
-      the production environment.
-
-       ```
-       PRODUCT_BUNDLE_IDENTIFIER = com.example.flutter_boilerplate
-       ```
-
-    - Change all lines containing  `com.example.flutter_boilerplate.stg` to the **new package name**
-      in
-      the staging environment.
-
-       ```
-       PRODUCT_BUNDLE_IDENTIFIER = com.example.flutter_boilerplate.stg
-       ```
-    - Change all lines containing  `com.example.flutter_boilerplate.dev` to the **new package name**
-      in
-      the development environment.
-
-       ```
-       PRODUCT_BUNDLE_IDENTIFIER = com.example.flutter_boilerplate.dev
-       ```
-
 ## Generate code and files before running project
 
 1. Get package dependencies:
@@ -125,6 +52,14 @@ This project is running on flutter version `3.24.2`.
        ```
        dart run build_runner build
        ```
+    - All-in-one terminal command for getting dependencies, generating files, and more:
+      ```
+      sh make.sh 
+      ```
+      Parameters:
+      - `--flavor=[YOUR_FLAVOR]` (required): Run the terminal with a specific flavor, e.g., `--flavor=dev`.
+      - `-f`: Run with `FVM`.
+      - `-r`: Run the app after generating files.
 3. (Optional)
     - To update all dependencies in pubspec.yaml file to latest version, run:
       ```
@@ -141,6 +76,8 @@ This project is running on flutter version `3.24.2`.
     ```
     flutter run --flavor=dev
     ```
+   
+   or use the all-in-one terminal command with the `-r` flag: `sh make.sh -r`
 
 Change `--flavor=dev` to `--flavor=prod` if you want to run in the production environment.
 ---

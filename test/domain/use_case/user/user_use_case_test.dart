@@ -1,4 +1,6 @@
 import 'package:flutter_boilerplate/data/repository/user/user_repository_impl.dart';
+import 'package:flutter_boilerplate/data/response/base_response.dart';
+import 'package:flutter_boilerplate/data/response/pagination_response.dart';
 import 'package:flutter_boilerplate/data/response/user/user_response.dart';
 import 'package:flutter_boilerplate/domain/use_cases/user/user_use_case_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,14 +15,18 @@ void main() {
   group('Run test [UserUseCase]', () {
     final mockRepository = MockUserRepositoryImpl();
     final useCase = UserUseCaseImpl(mockRepository);
-    const mockRepositorySuccess = Right<Exception, UserResponse>(
-      UserResponse(),
-    );
-    final mockRepositoryFailed = Left<Exception, UserResponse>(Exception());
+    final mockRepositorySuccess =
+        Right<Exception, BaseResponse<UserResponse>>(BaseResponse(
+      const UserResponse(),
+      pagination: const PaginationResponse(),
+    ));
+    final mockRepositoryFailed =
+        Left<Exception, BaseResponse<UserResponse>>(Exception());
 
     test('Run test: Fetch success', () async {
       // Mock the call [repository.fetchUsers] will return a type of Right<Exception, List<UserResponse>>.
-      provideDummy<Either<Exception, UserResponse>>(mockRepositorySuccess);
+      provideDummy<Either<Exception, BaseResponse<UserResponse>>>(
+          mockRepositorySuccess);
       when(mockRepository.fetchUsers())
           .thenAnswer((realInvocation) async => mockRepositorySuccess);
       final repositoryResult = await mockRepository.fetchUsers();

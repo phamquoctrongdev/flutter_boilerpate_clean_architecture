@@ -24,10 +24,11 @@ class UserController extends AsyncNotifier<UserResponse> {
     final response = await useCase.fetchUsers();
     return response.fold(
       (l) {
+        state = AsyncError(l, StackTrace.current);
         return const UserResponse();
       },
       (r) {
-        return r;
+        return r.data;
       },
     );
   }
