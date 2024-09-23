@@ -30,54 +30,76 @@ This project is running on flutter version `3.24.2`.
 1. Open **Run and debug** tab.
 2. Choose flavor that you want to running, `Run on dev` or `Run on prod` flavor.
 
-   **NOTE**: You can edit the configuration in `/.vscode/launch.json`.
+   > **NOTE**: You can edit the configuration in `/.vscode/launch.json`.
 
 ## Generate code and files before running project
 
-1. Get package dependencies:
-
-    ```
-    flutter pub get
-    ```
-
-2. Generate necessary files (assets, generation class...):
-    - To delete conflicting classes and re-generate, run:
+1. Single terminal command:
+   - Get package dependencies:
 
        ```
-       dart run build_runner build -d
+       flutter pub get
        ```
 
-    - To generate without delete conflicting outputs, run:
+   - Generate localization files:
 
        ```
-       dart run build_runner build
+       flutter gen-l10n
        ```
-    - All-in-one terminal command for getting dependencies, generating files, and more:
-      ```
-      sh make.sh 
-      ```
-      Parameters:
-      - `--flavor=[YOUR_FLAVOR]` (required): Run the terminal with a specific flavor, e.g., `--flavor=dev`.
-      - `-f`: Run with `FVM`.
-      - `-r`: Run the app after generating files.
+
+   - Generate native splash:
+
+       ```
+       dart run flutter_native_splash:create --flavors [YOUR_FLAVOR]
+       ```
+
+   - Generate necessary files (assets, generation class...):
+      - To delete conflicting classes and re-generate, run:
+
+         ```
+         dart run build_runner build -d
+         ```
+
+      - To generate without delete conflicting outputs, run:
+
+         ```
+         dart run build_runner build
+         ```
+
+2. All-in-one terminal command for getting dependencies, generating files, and more:
+
+   - Syntax:
+     ```
+     sh make.sh --flavor=[YOUR_FLAVOR] -f -r
+     ```
+     Parameters:
+      - `--flavor=[YOUR_FLAVOR]` (**Required**): Run the terminal with a specific flavor, e.g., `--flavor=dev`.
+      - `-f` (**Optional**): Run with `FVM`.
+      - `-r` (**Optional**): Run the app after generating files.
+      - `-c` (**Optional**): Delete the `build/` and `.dart_tool/` directories.
+
+   - Example:
+       ```
+       sh make.sh --flavor=dev -f -r
+       ```
 3. (Optional)
-    - To update all dependencies in pubspec.yaml file to latest version, run:
-      ```
-      flutter pub upgrade --major-versions --tighten
-      ```
+   - To update all dependencies in pubspec.yaml file to latest version, run:
+     ```
+     flutter pub upgrade --major-versions --tighten
+     ```
 
 ## How to run?
 
 **Two ways to run the project:**
 
 1. Click on `Run` or `Debug` in the IDE.
-2. Command run:
+2. Terminal command:
 
     ```
     flutter run --flavor=dev
     ```
-   
+
    or use the all-in-one terminal command with the `-r` flag: `sh make.sh -r`
 
-Change `--flavor=dev` to `--flavor=prod` if you want to run in the production environment.
+   ###### Change `--flavor=dev` to `--flavor=prod` if you want to run in the production environment.
 ---

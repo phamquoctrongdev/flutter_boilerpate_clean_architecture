@@ -118,9 +118,9 @@ flutter:
   generate: true
 
   fonts:
-    - family: MavenPro
+    - family: OpenSans
       fonts:
-        - asset: assets/fonts/MavenPro-Regular.ttf
+        - asset: assets/fonts/OpenSans-VariableFont_wdth,wght.ttf
 
   assets:
     - assets/images/pngs/

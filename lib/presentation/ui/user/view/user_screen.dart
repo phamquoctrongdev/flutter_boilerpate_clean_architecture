@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/common/constants/app_strings.dart';
+import 'package:flutter_boilerplate/presentation/extension/build_context_extension.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/app_bar_view.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/loading_mask.dart';
 import 'package:flutter_boilerplate/presentation/ui/widgets/not_found_data_view.dart';
@@ -14,6 +15,11 @@ class UserScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(userProvider);
+    ref.listen(userProvider, (pre, next) {
+      if (next.hasError) {
+        context.showErrorDialog(next.error);
+      }
+    });
     return Scaffold(
       appBar: const AppBarView(
         title: AppStrings.kUsers,

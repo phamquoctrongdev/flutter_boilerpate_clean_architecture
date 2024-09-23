@@ -27,7 +27,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       theme: FlexThemeData.light(
         scheme: FlexScheme.blue,
-        fontFamily: FontFamily.mavenPro,
+        fontFamily: FontFamily.openSans,
       ),
       darkTheme: FlexThemeData.dark(scheme: FlexScheme.blue),
       themeMode: ref.watch(themeProvider).value,

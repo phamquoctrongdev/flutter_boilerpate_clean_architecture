@@ -1,7 +1,8 @@
 enum AppRoute {
   user,
   userDetail,
-  profile,
+  theme,
+  errorDialog,
 }
 
 enum AppChildRoute {
@@ -13,7 +14,8 @@ extension AppRouteHelper on AppRoute {
     return switch (this) {
       AppRoute.user => '/user',
       AppRoute.userDetail => AppChildRoute.detail.convertFullPath('/user'),
-      AppRoute.profile => '/profile',
+      AppRoute.theme => '/profile',
+      AppRoute.errorDialog => '/error_dialog',
     };
   }
 
@@ -21,7 +23,8 @@ extension AppRouteHelper on AppRoute {
     return switch (this) {
       AppRoute.user => 'User',
       AppRoute.userDetail => 'UserDetail',
-      AppRoute.profile => 'Profile',
+      AppRoute.theme => 'Profile',
+      AppRoute.errorDialog => 'ErrorDialog',
     };
   }
 }

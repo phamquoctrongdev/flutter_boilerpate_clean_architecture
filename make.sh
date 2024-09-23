@@ -39,13 +39,21 @@ get_flavor() {
 
 generate_files() {
   if [[ $FVM -eq 0 ]]; then
-    fvm flutter clean
+    for arg in $@; do
+        if [[ $arg == "-c" ]]; then
+            fvm flutter clean
+        fi
+    done
     fvm flutter pub get
     fvm dart run build_runner build -d
     fvm flutter gen-l10n
     fvm dart run flutter_native_splash:create --flavors $FLAVOR
   else
-    flutter clean
+    for arg in $@; do
+        if [[ $arg == "-c" ]]; then
+            flutter clean
+        fi
+    done
     flutter pub get
     dart run build_runner build -d
     flutter gen-l10n
@@ -58,11 +66,10 @@ run_app() {
   for arg in $@; do
       if [[ $arg == "-r" ]]; then
         if [[ $FVM -eq 0 ]]; then
-            fvm flutter run ios --flavor $FLAVOR --target lib/main.dart
+            fvm flutter run --flavor=$FLAVOR
           else
-            flutter run ios --flavor $FLAVOR --target lib/main.dart
+            flutter run --flavor=$FLAVOR
           fi
-          echo "\033[0;32mApplication running...\033[0m"
         return
       fi
     done
@@ -78,7 +85,7 @@ display_parameters() {
 check_fvm_in_command $@
 get_flutter_version
 get_flavor $@
-generate_files
+generate_files $@
 display_parameters
 run_app $@
 

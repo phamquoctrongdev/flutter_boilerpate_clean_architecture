@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/presentation/router/router_helper.dart';
+import 'package:flutter_boilerplate/presentation/ui/dialogs/app_alert_dialog.dart';
+import 'package:flutter_boilerplate/presentation/ui/theme_setting/theme_setting_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../ui/dialogs/dialog_page.dart';
 import '../ui/main_home/view/main_home_page.dart';
 import '../ui/user/view/user_detail_screen.dart';
 import '../ui/user/view/user_screen.dart';
@@ -45,17 +48,29 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoute.profile.path,
+                path: AppRoute.theme.path,
                 builder: (context, state) {
-                  return const Scaffold(
-                    backgroundColor: Colors.green,
-                    body: Center(child: Text('Child')),
-                  );
+                  return const ThemeSettingScreen();
                 },
               ),
             ],
-          )
+          ),
         ],
+      ),
+      // Dialogs
+      GoRoute(
+        path: AppRoute.errorDialog.path,
+        pageBuilder: (context, state) {
+          String? alert;
+          if (state.extra != null) {
+            alert = state.extra as String;
+          }
+          return DialogPage(
+            child: AppAlertDialog(
+              message: alert,
+            ),
+          );
+        },
       ),
     ],
   );

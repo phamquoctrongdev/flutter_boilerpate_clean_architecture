@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_boilerplate/common/exception/api_exception.dart';
+import 'package:flutter_boilerplate/common/exception/base_exception.dart';
+import 'package:flutter_boilerplate/common/exception/default_exception.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../common/error/api_error.dart';
 import 'datasource/remote/auth_interceptor.dart';
 import 'response/base_response.dart';
 import 'response/pagination_response.dart';
@@ -17,8 +19,7 @@ enum NetworkMethod {
 }
 
 typedef NetworkSuccessCallBack<T> = T Function(Response response);
-
-typedef NetworkErrorCallBack<E extends ApiError> = E Function(DioException err);
+typedef NetworkErrorCallBack<E> = E Function(DioException exception);
 
 class NetworkClient {
   final Dio dio;
@@ -55,14 +56,18 @@ class NetworkClient {
     }
   }
 
-  // `onError` is only called when the exception is a subtype of [DioException]
-  Future<Either<Exception, BaseResponse<T>>> call<T>({
+  // `onError` used to custom specific exception.
+  Future<Either<BaseException, BaseResponse<T>>>
+      call<T, E extends BaseException>({
     required String endpoint,
     required NetworkMethod method,
     required NetworkSuccessCallBack<T> onSuccess,
-    NetworkErrorCallBack? onError,
+    NetworkErrorCallBack<E>? onError,
     bool addAuthentication = true,
     bool addDioLog = true,
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
   }) async {
     try {
       _addInterceptor(
@@ -73,14 +78,23 @@ class NetworkClient {
       switch (method) {
         case NetworkMethod.get:
           response = await dio.get(endpoint);
+          break;
         case NetworkMethod.post:
-          response = await dio.post(endpoint);
+          response = await dio.post(
+            endpoint,
+            data: data,
+            options: options,
+          );
+          break;
         case NetworkMethod.put:
           response = await dio.put(endpoint);
+          break;
         case NetworkMethod.patch:
           response = await dio.patch(endpoint);
+          break;
         case NetworkMethod.delete:
           response = await dio.delete(endpoint);
+          break;
       }
       final result = onSuccess(response);
       final pagination = PaginationResponse.fromJson(response.data);
@@ -90,12 +104,13 @@ class NetworkClient {
           pagination: pagination,
         ),
       );
-    } on Exception catch (e) {
-      if (onError != null && e is DioException) {
-        final error = onError(e);
-        return Left(error);
+    } on DioException catch (e) {
+      if (onError != null) {
+        return Left(onError(e));
       }
-      return Left(e);
+      return Left(ApiException(e));
+    } on Exception catch (e) {
+      return Left(DefaultException(e));
     }
   }
 }
