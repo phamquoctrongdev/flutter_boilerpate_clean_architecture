@@ -1,8 +1,8 @@
-import 'package:flutter_boilerplate/data/repository/user/user_repository_impl.dart';
-import 'package:flutter_boilerplate/data/response/base_response.dart';
-import 'package:flutter_boilerplate/data/response/pagination_response.dart';
-import 'package:flutter_boilerplate/data/response/user/user_response.dart';
-import 'package:flutter_boilerplate/domain/use_cases/user/user_use_case_impl.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/repository/user/user_repository_impl.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/base_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/pagination_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/user/user_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/domain/use_cases/user/user_use_case_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/annotations.dart';

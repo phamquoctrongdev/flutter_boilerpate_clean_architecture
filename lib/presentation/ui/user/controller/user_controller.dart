@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_boilerplate/data/response/user/user_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/user/user_response.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/presentation/ui/user/view/user_screen.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/user/view/user_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 

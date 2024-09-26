@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/presentation/ui/widgets/loading_animation.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/loading_animation.dart';
 
 class LoadingMask extends StatelessWidget {
   const LoadingMask({

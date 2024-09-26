@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/presentation/router/router_helper.dart';
-import 'package:flutter_boilerplate/presentation/ui/dialogs/app_alert_dialog.dart';
-import 'package:flutter_boilerplate/presentation/ui/theme_setting/theme_setting_screen.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/router/router_helper.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/dialogs/app_alert_dialog.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/theme_setting/theme_setting_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../ui/dialogs/dialog_page.dart';

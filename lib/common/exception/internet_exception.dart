@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/common/exception/base_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/base_exception.dart';
 
 class InternetException extends BaseException {
   InternetException(super.dioException);

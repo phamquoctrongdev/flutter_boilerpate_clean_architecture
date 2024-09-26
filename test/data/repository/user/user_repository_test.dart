@@ -1,10 +1,10 @@
-import 'package:flutter_boilerplate/common/exception/base_exception.dart';
-import 'package:flutter_boilerplate/common/exception/default_exception.dart';
-import 'package:flutter_boilerplate/data/datasource/remote/user/user_remote_datasource_impl.dart';
-import 'package:flutter_boilerplate/data/repository/user/user_repository_impl.dart';
-import 'package:flutter_boilerplate/data/response/base_response.dart';
-import 'package:flutter_boilerplate/data/response/pagination_response.dart';
-import 'package:flutter_boilerplate/data/response/user/user_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/base_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/default_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/datasource/remote/user/user_remote_datasource_impl.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/repository/user/user_repository_impl.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/base_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/pagination_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/user/user_response.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/annotations.dart';

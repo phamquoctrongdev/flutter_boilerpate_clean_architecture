@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/main.dart';
+import 'package:flutter_boilerplate_clean_architecture/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

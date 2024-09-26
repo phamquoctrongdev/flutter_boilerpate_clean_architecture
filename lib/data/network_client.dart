@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_boilerplate/common/exception/api_exception.dart';
-import 'package:flutter_boilerplate/common/exception/base_exception.dart';
-import 'package:flutter_boilerplate/common/exception/default_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/api_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/base_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/default_exception.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

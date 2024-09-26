@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_boilerplate/data/datasource/remote/api_endpoint.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/datasource/remote/api_endpoint.dart';
 
 class AuthInterceptor extends Interceptor {
   @override

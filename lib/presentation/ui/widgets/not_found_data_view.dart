@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/gen/assets.gen.dart';
+import 'package:flutter_boilerplate_clean_architecture/gen/assets.gen.dart';
 
 import '../../../common/constants/app_strings.dart';
 import '../../../common/constants/app_text_styles.dart';

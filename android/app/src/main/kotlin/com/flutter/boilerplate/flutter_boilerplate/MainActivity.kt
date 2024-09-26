@@ -1,4 +1,4 @@
-package com.example.flutter_boilerplate
+package com.example.flutter_boilerplate_clean_architecture
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/gen/colors.gen.dart';
+import 'package:flutter_boilerplate_clean_architecture/gen/colors.gen.dart';
 
 class AppTextStyles {
   static const blackSemiNormal = TextStyle(

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_boilerplate/data/datasource/remote/user/user_remote_datasource_impl.dart';
-import 'package:flutter_boilerplate/service/session_manager.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/datasource/remote/user/user_remote_datasource_impl.dart';
+import 'package:flutter_boilerplate_clean_architecture/service/session_manager.dart';
 import 'package:get_it/get_it.dart';
 
 import '../data/datasource/remote/user/user_remote_datasource.dart';

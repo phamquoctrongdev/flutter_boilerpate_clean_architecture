@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/common/constants/app_strings.dart';
-import 'package:flutter_boilerplate/presentation/extension/build_context_extension.dart';
-import 'package:flutter_boilerplate/presentation/ui/widgets/app_bar_view.dart';
-import 'package:flutter_boilerplate/presentation/ui/widgets/loading_mask.dart';
-import 'package:flutter_boilerplate/presentation/ui/widgets/not_found_data_view.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/constants/app_strings.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/common/util_mixin.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/app_bar_view.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/loading_mask.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/not_found_data_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../controller/user_controller.dart';
 import 'widgets/user_item.dart';
 
-class UserScreen extends ConsumerWidget {
+class UserScreen extends ConsumerWidget with UtilMixin {
   const UserScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(userProvider);
-    ref.listen(userProvider, (pre, next) {
-      if (next.hasError) {
-        context.showErrorDialog(next.error);
-      }
-    });
+    ref.listen(
+      userProvider,
+      (pre, next) {
+        if (next.hasError) {
+          showError(context, exception: next.error);
+        }
+      },
+    );
     return Scaffold(
       appBar: const AppBarView(
         title: AppStrings.kUsers,

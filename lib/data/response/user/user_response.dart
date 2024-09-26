@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/data/response/user/user.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_response.freezed.dart';

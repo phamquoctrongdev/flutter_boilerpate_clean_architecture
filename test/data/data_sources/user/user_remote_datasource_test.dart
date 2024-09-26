@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_boilerplate/data/datasource/remote/user/user_remote_datasource_impl.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/datasource/remote/user/user_remote_datasource_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/annotations.dart';

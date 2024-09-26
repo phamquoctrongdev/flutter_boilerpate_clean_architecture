@@ -1,7 +1,7 @@
-import 'package:flutter_boilerplate/common/exception/base_exception.dart';
-import 'package:flutter_boilerplate/data/network_client.dart';
-import 'package:flutter_boilerplate/data/response/base_response.dart';
-import 'package:flutter_boilerplate/data/response/user/user_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/common/exception/base_exception.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/network_client.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/base_response.dart';
+import 'package:flutter_boilerplate_clean_architecture/data/response/user/user_response.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../api_endpoint.dart';
