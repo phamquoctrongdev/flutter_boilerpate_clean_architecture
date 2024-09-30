@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_boilerplate_clean_architecture/data/datasource/remote/user/user_remote_datasource_impl.dart';
-import 'package:flutter_boilerplate_clean_architecture/service/session_manager.dart';
+import 'package:flutter_boilerplate_clean_architecture/service/user_data_manager.dart';
 import 'package:get_it/get_it.dart';
 
 import '../data/datasource/remote/user/user_remote_datasource.dart';
@@ -9,7 +9,7 @@ import '../domain/repositories/user/user_repository.dart';
 import '../domain/use_cases/user/user_use_case.dart';
 import '../domain/use_cases/user/user_use_case_impl.dart';
 
-class LocatorService {
+class DependencyManager {
   bool _isInitialized = false;
 
   void initialize() {
@@ -34,7 +34,7 @@ class LocatorService {
         GetIt.I.get<UserRepository>(),
       ),
     );
-    GetIt.I.registerLazySingleton(() => SessionManager());
+    GetIt.I.registerLazySingleton(() => UserDataManager());
     _isInitialized = true;
   }
 }

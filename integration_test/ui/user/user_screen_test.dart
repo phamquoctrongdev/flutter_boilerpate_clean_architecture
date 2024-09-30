@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('Test [UserScreen]', () {
     testWidgets('Test listview', (widgetTester) async {
-      await widgetTester.pumpWidget(const MyApp());
+      await widgetTester.pumpWidget(const Application());
       // Verify Loading indicator is present
       final loadingProgress = find.byType(CircularProgressIndicator);
       expect(loadingProgress, findsOneWidget);

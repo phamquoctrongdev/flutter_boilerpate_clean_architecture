@@ -9,7 +9,7 @@ void main() {
       testWidgets(
         'Bottom navigation bar test',
         (widgetTester) async {
-          await widgetTester.pumpWidget(const MyApp());
+          await widgetTester.pumpWidget(const Application());
           final bottomNav = find.byType(BottomNavigationBar);
           expect(bottomNav, findsOneWidget);
 

@@ -6,7 +6,7 @@ void main() {
   group('MainHomeView test', () {
     testWidgets('Find a BottomNavigationBar widget', (widgetTester) async {
       await widgetTester.pumpWidget(
-        const MyApp(),
+        const Application(),
       );
       await widgetTester.pumpAndSettle();
       final bottomNav = find.byType(BottomNavigationBar);
