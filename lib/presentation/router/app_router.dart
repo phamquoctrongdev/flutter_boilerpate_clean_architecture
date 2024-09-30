@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_clean_architecture/presentation/router/router_helper.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/router/route_helper.dart';
 import 'package:flutter_boilerplate_clean_architecture/presentation/ui/dialogs/app_alert_dialog.dart';
 import 'package:flutter_boilerplate_clean_architecture/presentation/ui/theme_setting/theme_setting_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -34,14 +34,12 @@ class AppRouter {
                 builder: (context, state) {
                   return const UserScreen();
                 },
-                routes: [
-                  GoRoute(
-                    path: AppChildRoute.detail.path,
-                    builder: (context, state) {
-                      return UserDetailScreen(text: state.extra as String);
-                    },
-                  ),
-                ],
+              ),
+              GoRoute(
+                path: AppRoute.userDetail.path,
+                builder: (context, state) {
+                  return UserDetailScreen(text: state.extra as String);
+                },
               ),
             ],
           ),

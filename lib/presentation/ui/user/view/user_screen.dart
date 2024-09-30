@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_clean_architecture/common/constants/app_strings.dart';
-import 'package:flutter_boilerplate_clean_architecture/presentation/ui/common/util_mixin.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/ui/common/screen_util_mixin.dart';
 import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/app_bar_view.dart';
 import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/loading_mask.dart';
 import 'package:flutter_boilerplate_clean_architecture/presentation/ui/widgets/not_found_data_view.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controller/user_controller.dart';
 import 'widgets/user_item.dart';
 
-class UserScreen extends ConsumerWidget with UtilMixin {
+class UserScreen extends ConsumerWidget with ScreenUtilMixin {
   const UserScreen({super.key});
 
   @override

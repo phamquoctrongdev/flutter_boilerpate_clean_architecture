@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_clean_architecture/data/response/user/user.dart';
-import 'package:flutter_boilerplate_clean_architecture/presentation/router/router_helper.dart';
+import 'package:flutter_boilerplate_clean_architecture/presentation/router/route_helper.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../common/constants/app_text_styles.dart';
